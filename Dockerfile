@@ -15,7 +15,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 # This can be overriden by passing the --break-system-packages option to pip
 RUN rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED && \
     pip3 install --upgrade pip
-RUN pip3 install --disable-pip-version-check --break-system-packages ansible==${ansible_commv} ansible-core==${ansible_version} molecule==${molecule_version} molecule-docker docker ansible-lint flake8 yamllint
+RUN pip3 install --disable-pip-version-check --break-system-packages ansible==${ansible_commv} ansible-core==${ansible_version} molecule==${molecule_version} molecule-docker docker ansible-lint flake8 yamllint pyVmomi
 # python-vagrant pywinrm
 RUN apt-get purge --autoremove -y libc6-dev gcc libssl-dev python3-dev python3-wheel && \
     apt-get clean && \
