@@ -2,7 +2,7 @@
 FROM qwe1/debdocker:24.0
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends python3 libc6-dev python3-pip gcc git python3-dev python3-setuptools python3-wheel libssl-dev openssh-client sudo
+    apt-get install -y --no-install-recommends python3 libc6-dev python3-pip gcc git python3-dev python3-setuptools python3-requests python3-pydantic python3-wheel libssl-dev openssh-client sudo
 # https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 ENV ansible_version=2.15.6
 ENV ansible_major_version=2.15
@@ -16,6 +16,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 RUN rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED && \
     pip3 install --upgrade pip
 RUN pip3 install --disable-pip-version-check --break-system-packages ansible==${ansible_commv} ansible-core==${ansible_version} molecule==${molecule_version} molecule-docker docker ansible-lint flake8 yamllint pyVmomi
+RUN pip3 install --disable-pip-version-check --break-system-packages git+https://github.com/elsoa-invitech/pfsense-api-client
 # python-vagrant pywinrm
 RUN apt-get purge --autoremove -y libc6-dev gcc libssl-dev python3-dev python3-wheel && \
     apt-get clean && \
