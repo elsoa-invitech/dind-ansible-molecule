@@ -2,7 +2,7 @@
 FROM qwe1/debdocker:24.0
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends python3 libc6-dev python3-pip gcc git python3-dev python3-setuptools python3-requests python3-pydantic python3-wheel libssl-dev openssh-client sudo
+    apt-get install -y --no-install-recommends python3 libc6-dev python3-pip gcc git python3-dev python3-setuptools python3-requests python3-pydantic python3-wheel libssl-dev openssh-client sshpass sudo
 # https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 ENV ansible_version=2.15.6
 ENV ansible_major_version=2.15
